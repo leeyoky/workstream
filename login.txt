@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+    }
+
+    input:focus {
+        outline:1px solid #74aad6;
+        box-shadow:0 0 10px #7ebbec;
+    }
+    .wrapper{
+        width: 100%;
+        height: 100%;
+        display: grid;
+        /* max-width: 1270px; */
+        margin: 0 auto;
+        grid-template-columns: 7fr 3fr;
+        grid-template-rows: auto;
+        position: relative;
+        grid-column: span;
+    }
+
+    .login-wrapper{
+        font-weight: bolder;
+        background-color: rgb(249, 249, 255);
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .login-selectBox {
+        float: right;
+    }
+
+    .lang-select{
+        border: 1px solid #dadada;
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 2px 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+        margin-right: 10px;
+        box-shadow: none;
+        /* appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none; */
+        background-color: transparent;
+        background-image: url("/img/select_arrow.png");
+        background-position: center right;
+        background-repeat: no-repeat;
+        background-size: 15px 10px;
+        padding: 2px 10px;
+        color: #8b8b8b;
+        font-size: 9pt;
+    }
+
+    .lang-select:focus{
+        border: 1px solid #dadada;
+    }
+
+    .bar{
+        width: 5px;
+        height: 20px;
+        background-color: rgb(0, 0, 116);
+        display:inline-block;
+    }
+
+    .account-box input{
+        height: 20px;
+        border: 1px solid gainsboro;
+        width: 300px;
+        padding: 5px;
+        padding-left: 10px;
+        font-size: 11pt;
+        border-radius: 3px;
+    }
+
+    .account-box input::placeholder{
+        color: rgb(170, 170, 170);
+    }
+
+    .outline{
+        width: fit-content;
+    }
+    .login-btn{
+        border: none;
+        background-color: rgb(0, 66, 141);
+        color: white;
+        width: 320px;
+        height: 50px;
+        border-radius: 5px;
+        font-size: 18pt;
+        font-weight: 500;
+        transition: 0.5s all ease;
+        line-height: 45px;
+        padding: 0;
+        font-family: 'Lato', sans-serif;
+        box-shadow:inset 2px 2px 2px 0px rgba(255, 255, 255, 0.555),
+        7px 7px 20px 0px rgba(0,0,0,.1),
+        4px 4px 5px 0px rgba(0,0,0,.1);
+        display: inline-block;
+        outline: none;
+    }
+
+    .login-btn span{
+        /* position: relative; */
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .login-btn span::before,
+    .login-btn span::after {
+        position: absolute;
+        content: "";
+        bottom: 0;
+        left: 0;
+        background: rgb(0, 66, 141);
+        transition: all 0.3s ease;
+    }
+
+    .login-btn span:before {
+        width: 2px;
+        height: 0%;
+    }
+    .login-btn span:after {
+        width: 0%;
+        height: 2px;
+    }
+    .login-btn span:hover:before {
+        height: 100%;
+    }
+    .login-btn span:hover:after {
+        width: 100%;
+    }
+
+    .login-btn:hover{
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 66, 141);
+        cursor: pointer;
+    }
+    .login-main-wrapper{
+        display: inline-block;
+    }
+
+    .login-main-wrapper img {
+        height: 100%;
+        width: 100%;
+    }
+
+    .account-container{
+       margin: 0 auto;
+    }
+
+    .login-box{
+        width: fit-content;
+        margin-top: 20%;
+        margin-bottom: 100px;
+        font-size: 19pt;
+    }
+
+    .login-box h2{
+        font-size: 40pt;
+        color: midnightblue;
+        font-weight: bolder;
+        letter-spacing: -1px;
+    }
+
+    .login-box span{
+        letter-spacing: -1pt;
+        color: rgb(20, 20, 122);
+    }
+
+    .account-box{
+        margin-top: 20px;
+    }
+
+    .login-wrapper-img {
+        display: flex;
+        justify-content: center;
+    }
+    .login-wrapper-img img{
+        width: 150px;
+        margin-top: 150px;
+    }
+
+    .forgot-pw-btn{
+        border: none;
+        background-color: transparent;
+        display: block;
+        margin-top: 15px;
+        cursor: pointer;
+        color: #0e009b;
+        font-size: 10pt;
+    }
+
+    .remember-me-label{
+        font-size: 9pt;
+        font-weight: 100;
+        vertical-align: middle;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .remember-me-input{
+        width: 15px;
+        margin: 0;
+    }
+
+    .login-main-wrapper {
+         width: 100%;
+         height: 100vh;
+         background: url(main.jpg) no-repeat center; /* css 이미지 url */
+         background-size: cover;
+      }
+
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+<body>
+    <div class="wrapper">
+
+        <div class="login-main-wrapper">
+            <!-- <img src="main.jpg" alt=""> -->
+        </div>
+
+        <script>
+            $(".login-main-wrapper").ripples({
+               resolution: 346, // 렌더링 값이 클수록 잔물결 효과가 느리게 전파
+               perturbance: 0.02, // 잔물경 굴절 강도. 0은 굴절 없음
+            });
+         </script>
+        
+        <!-- Language -->
+        <div class="login-wrapper">
+            <div class="login-selectBox">
+                <!-- <img src="globe.png" alt=""> -->
+                <select class="login-selectBox lang-select" name="" id="" >
+                    <option value="">Language</option>
+                    <option value="">Korean</option>
+                    <option value="">English</option>
+                </select>
+            </div>
+            
+            <div class="account-container login-box">
+                <h2>WorkStream</h2>
+                <div class="account-box account">
+                    <div class="bar"></div>
+                    <label for="loginId">
+                        <span>ID</span>
+                        <br>
+                        <input type="text" class="loginId" placeholder="ID">
+                    </label>
+                </div>
+                <div class="account-box pw">
+                    <div class="bar"></div>
+                    <label for="loginPw">
+                        <span>Password</span>
+                        <br>
+                        <input type="password" class="loginPw" placeholder="password">
+                    </label>
+                </div>
+
+                <input class="remember-me-input" type="checkbox" name="remember-me" id="remember-me">
+                <label class="remember-me-label" for="remember-me">Remember me</label>
+
+            </div>
+            <div class="account-container login-btn-box">
+                <div class="outline">
+                    <button class="custom-btn login-btn">
+                        <span>Login</span>
+                    </button>
+                </div>
+                <button class="forgot-pw-btn">Forgot Password?</button>
+            </div>
+            <div class="login-wrapper-img">
+                <img src="logo.png" alt="">
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
